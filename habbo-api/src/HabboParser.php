@@ -217,8 +217,9 @@ class HabboParser implements HabboParserInterface
      * This is a custom addition to the Habbo API, added for Helix.
      *
      * Please note that Sulake changed the way Rooms are handled
-     * in the form of a new ID format. The new IDs are numerical
-     * instead of "r-hh<*>"
+     * in the form of a new ID format. The new IDs are formatted like
+     * "r-hh<*>" instead of solely numeric IDs. Room data seems to
+     * be the only endpoint left that hasn't adapted to the new ID yet
      *
      * @param $room_id
      * @return Room
