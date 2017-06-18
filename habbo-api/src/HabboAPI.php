@@ -82,4 +82,14 @@ class HabboAPI
     {
         return $this->parser->parseAchievements($id);
     }
+
+    /** Based on a unique ID, get a full Room object
+     *
+     * @param string $id The unique ID Habbo uses for their api. Starts with "hh<country code>-" (i.e. "hhus-")
+     * @return Profile
+     */
+    public function getRoom($id)
+    {
+        return $this->parser->parseRoom($id);
+    }
 }

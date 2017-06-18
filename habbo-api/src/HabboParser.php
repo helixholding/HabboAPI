@@ -88,7 +88,7 @@ class HabboParser implements HabboParserInterface
 
         // Create Profile entity
         $profile = new Profile();
-        
+
         // Habbo
         $habbo = new Habbo();
         $habbo->parse($data['user']);
@@ -210,6 +210,26 @@ class HabboParser implements HabboParserInterface
         }
 
         return $achievements;
+    }
+
+    /**
+     * parseRoom will return a Room object based on a room ID.
+     * This is a custom addition to the Habbo API, added for Helix.
+     *
+     * Please note that Sulake changed the way Rooms are handled
+     * in the form of a new ID format. The new IDs are numerical
+     * instead of "r-hh<*>"
+     *
+     * @param $room_id
+     * @return Room
+     */
+    public function parseRoom($room_id)
+    {
+        list($data) = $this->_callUrl($this->api_base . '/api/public/rooms/' . $room_id, true);
+
+        $room = new Room();
+        $room->parse($data);
+        return $room;
     }
 
     /**

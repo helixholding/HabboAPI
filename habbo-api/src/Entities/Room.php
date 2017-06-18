@@ -28,6 +28,7 @@ class Room implements Entity
     private $thumbnailUrl;
     private $imageUrl;
     private $rating;
+    private $habboGroupId;
 
     /** Parses room info array to \Entities\Room object
      *
@@ -51,6 +52,10 @@ class Room implements Entity
 
         if (isset($room['creationTime'])) {
             $this->setCreationTime($room['creationTime']);
+        }
+
+        if (isset($room['habboGroupId'])) {
+            $this->setHabboGroupId($room['habboGroupId']);
         }
     }
 
@@ -289,5 +294,21 @@ class Room implements Entity
     public function setUniqueId($uniqueId)
     {
         $this->uniqueId = $uniqueId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHabboGroupId()
+    {
+        return $this->habboGroupId;
+    }
+
+    /**
+     * @param string $uniqueId
+     */
+    public function setHabboGroupId($habboGroupId)
+    {
+        $this->habboGroupId = $habboGroupId;
     }
 }
